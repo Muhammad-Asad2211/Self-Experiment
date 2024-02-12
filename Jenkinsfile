@@ -2,17 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout Source Code') {
+        stage('Checkout Git Repository') {
             steps {
-                // Checkout source code from Git repository
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Muhammad-Asad2211/Self-Experiment.git']])
+                script {
+                    // Checkout your Git repository
+                    git url: 'https://github.com/Muhammad-Asad2211/Self-Experiment.git'
+                }
             }
         }
         stage('Build Docker Image') {
             steps {
                 script {
                     // Build Docker image
-                    docker.build('my-apache-server', '.')
+                    docker.build('my-apache-server', './path/to/docker')
                 }
             }
         }

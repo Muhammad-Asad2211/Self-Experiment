@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     // Build Docker image
-                    docker.build('my-apache-server', './path/to/docker')
+                    docker.build('my-apache-server', '.')
                 }
             }
         }
